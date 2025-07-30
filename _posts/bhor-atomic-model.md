@@ -1,7 +1,7 @@
 ---
-title: 'Bhor's Atomic Model'
+title: 'Bhors Atomic Model'
 date: 2025-12-09
-permalink: /posts/2025/08/blog-post-2
+permalink: /posts/2025/09/blog-post-2/
 tags:
   - quantum
   - math
