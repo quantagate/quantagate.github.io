@@ -13,7 +13,7 @@ redirect_from:
 
 ## About Me
 
-The world of quantum mechanics is often depicted as a bizarre and counterintuitive place. Particles existing in multiple states simultaneously $(|\psi\rangle = \alpha |0\rangle + \beta |1\rangle)$ , spooky action at a distance – it all sounds like science fiction. But here’s the thing: quantum mechanics isn’t some fringe theory. It’s the undeniably successful framework that underpins the behavior of the universe at its most fundamental level.
+The world of quantum mechanics is often depicted as a bizarre and counterintuitive place. Particles existing in multiple states simultaneously, spooky action at a distance – it all sounds like science fiction. But here’s the thing: quantum mechanics isn’t some fringe theory. It’s the undeniably successful framework that underpins the behavior of the universe at its most fundamental level.
 
 My passion lies in demystifying this "weirdness" and translating it into powerful, real-world applications. I believe that by embracing concepts like **superposition**, **wave-particle duality**, and **entanglement**, we can unlock a new era of technological innovation. My work focuses on the intersection of quantum computing and artificial intelligence, exploring how quantum algorithms can solve problems currently intractable for even the most powerful classical supercomputers.
 
