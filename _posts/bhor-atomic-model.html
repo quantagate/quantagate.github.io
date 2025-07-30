@@ -1,0 +1,417 @@
+---
+title: 'Bhor's Atomic Model'
+date: 2025-12-09
+permalink: /posts/bhor-atomic-model.html
+tags:
+  - quantum
+  - math
+  - physics
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bohr Atomic Model: An Interactive Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            line-height: 1;
+            color: #7a5195;
+        }
+        .nucleus {
+            width: 80px;
+            height: 80px;
+            background: #ffa600;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(255, 166, 0, 0.7);
+        }
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 2px dashed #374c80;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .orbit-1 { width: 150px; height: 150px; }
+        .orbit-2 { width: 250px; height: 250px; }
+        .orbit-3 { width: 350px; height: 350px; }
+        .electron {
+            width: 20px;
+            height: 20px;
+            background: #ef5675;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .electron-1 { top: -10px; left: 50%; transform: translateX(-50%); }
+        .electron-2 { top: 50%; right: -10px; transform: translateY(-50%); }
+        .electron-3 { bottom: -10px; left: 50%; transform: translateX(-50%); }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#003f5c] mb-2">The Bohr Atomic Model</h1>
+            <p class="text-lg md:text-xl text-gray-600">A quantum leap in understanding the atom.</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="intro" class="bg-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
+                <div class="text-center md:text-left flex-1">
+                    <h2 class="text-3xl font-bold text-[#003f5c] mb-4">A Revolutionary Idea in 1913</h2>
+                    <p class="text-gray-700 leading-relaxed">Proposed by Danish physicist Niels Bohr, the model was a pivotal step that combined classical physics with early quantum theory. It provided the first successful explanation for the discrete emission lines of the hydrogen atom, suggesting that electrons exist in specific, quantized energy orbits around the nucleus, much like planets around a sun.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-8xl font-bold text-[#7a5195]">1913</div>
+                    <div class="text-xl text-gray-500">Year of Proposal</div>
+                </div>
+            </section>
+
+            <section id="anatomy">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Anatomy of the Bohr Atom</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6 h-full">
+                        <h3 class="text-xl font-bold text-center mb-4">Atomic Structure</h3>
+                        <div class="relative w-full h-[350px] flex items-center justify-center">
+                            <div class="nucleus">Nucleus</div>
+                            <div class="orbit orbit-1"><div class="electron electron-1">K</div></div>
+                            <div class="orbit orbit-2"><div class="electron electron-2">L</div></div>
+                            <div class="orbit orbit-3"><div class="electron electron-3">M</div></div>
+                        </div>
+                        <p class="text-center mt-4 text-gray-600">Electrons occupy discrete, circular orbits (shells K, L, M, etc.) with specific energy levels around a central, positively charged nucleus.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                         <h3 class="text-xl font-bold text-center mb-4">Atomic Composition</h3>
+                        <div class="chart-container">
+                            <canvas id="compositionChart"></canvas>
+                        </div>
+                         <p class="text-center mt-4 text-gray-600">The atom consists of a dense nucleus containing protons and neutrons, with much lighter electrons orbiting it. Most of the atom is empty space.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="postulates">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">The Four Key Postulates</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-t-4 border-[#374c80]">
+                        <div class="text-4xl mb-3">1</div><h3 class="text-lg font-bold mb-2">Fixed Orbits</h3><p class="text-sm text-gray-600">Electrons revolve in stable, circular orbits with definite, quantized energy levels and do not exist in between.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-t-4 border-[#7a5195]">
+                        <div class="text-4xl mb-3">2</div><h3 class="text-lg font-bold mb-2">Stationary States</h3><p class="text-sm text-gray-600">While in a fixed orbit, an electron does not radiate energy, defying classical electromagnetic theory.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-t-4 border-[#bc5090]">
+                        <div class="text-4xl mb-3">3</div><h3 class="text-lg font-bold mb-2">Energy Transitions</h3><p class="text-sm text-gray-600">Energy is emitted or absorbed only when an electron jumps from one allowed orbit to another.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 text-center border-t-4 border-[#ef5675]">
+                        <div class="text-4xl mb-3">4</div><h3 class="text-lg font-bold mb-2">Quantized Momentum</h3><p class="text-sm text-gray-600">The angular momentum of an electron in an orbit is quantized, being an integer multiple of h/2π.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="transitions">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">The Quantum Jump: How Light is Born</h2>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                     <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">The model's greatest success was explaining atomic spectra. When an electron absorbs energy, it jumps to a higher orbit (excitation). When it falls back, it releases that energy as a single particle of light (a photon) with a specific wavelength, creating a distinct spectral line.</p>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                        <div class="text-center p-4 border border-gray-200 rounded-lg">
+                            <div class="text-6xl text-[#ff764a]">⚡️</div>
+                            <h3 class="text-xl font-bold text-[#ff764a]">Absorption</h3>
+                            <p class="text-gray-600">Electron gains energy<br>and jumps to a higher orbit.</p>
+                        </div>
+                        <div class="flow-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                        <div class="text-center p-4 border border-gray-200 rounded-lg bg-gray-50">
+                             <div class="text-6xl">⚛️</div>
+                             <h3 class="text-xl font-bold">Excited Atom</h3>
+                             <p class="text-gray-600">Electron is in an<br>unstable, higher energy state.</p>
+                        </div>
+                        <div class="flow-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                        <div class="text-center p-4 border border-gray-200 rounded-lg">
+                            <div class="text-6xl text-[#7a5195]">💡</div>
+                            <h3 class="text-xl font-bold text-[#7a5195]">Emission</h3>
+                            <p class="text-gray-600">Electron falls to a lower orbit,<br>releasing a photon of light.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="spectrum">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Explaining the Hydrogen Spectrum</h2>
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                     <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">The discrete lines in hydrogen's emission spectrum correspond to electrons falling to specific energy levels. For instance, transitions to the n=2 level produce the visible "Balmer series" of light.</p>
+                    <div class="chart-container">
+                        <canvas id="energyLevelChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="comparison">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Triumphs and Troubles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-bold text-center mb-4">Model Applicability</h3>
+                        <div class="chart-container h-80">
+                            <canvas id="applicabilityChart"></canvas>
+                        </div>
+                        <p class="text-center mt-4 text-gray-600">The model is remarkably accurate for hydrogen but fails to predict the complex interactions in multi-electron atoms.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center">
+                        <div>
+                            <h3 class="text-xl font-bold text-green-600 mb-3">✅ Successes</h3>
+                            <ul class="list-none space-y-2 text-gray-700">
+                                <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Explained hydrogen's line spectrum.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Introduced quantized energy levels.</li>
+                                <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> Provided a stable atom model.</li>
+                            </ul>
+                        </div>
+                        <hr class="my-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-red-600 mb-3">❌ Limitations</h3>
+                            <ul class="list-none space-y-2 text-gray-700">
+                                <li class="flex items-center"><span class="text-red-500 mr-2">✖</span> Fails for multi-electron atoms.</li>
+                                <li class="flex items-center"><span class="text-red-500 mr-2">✖</span> Can't explain Zeeman/Stark effects.</li>
+                                <li class="flex items-center"><span class="text-red-500 mr-2">✖</span> Violates Heisenberg Uncertainty Principle.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="legacy">
+                <h2 class="text-3xl font-bold text-center text-[#003f5c] mb-8">Legacy: A Stepping Stone to Modern Physics</h2>
+                 <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">While the Bohr model has been superseded, its core idea of quantized energy levels was revolutionary and laid the essential groundwork for the modern quantum mechanical model, which describes electrons not as particles in fixed orbits, but as probability clouds (orbitals).</p>
+                    <div class="flex flex-col md:flex-row justify-center items-stretch gap-8">
+                        <div class="flex-1 text-center p-6 border rounded-lg">
+                            <h3 class="text-xl font-bold mb-4">Bohr Model</h3>
+                            <div class="relative w-48 h-48 mx-auto border-2 border-dashed border-[#7a5195] rounded-full flex items-center justify-center">
+                                <div class="w-4 h-4 bg-[#7a5195] rounded-full"></div>
+                                <div class="absolute top-0 left-1/2 -ml-2 w-4 h-4 bg-[#ef5675] rounded-full"></div>
+                            </div>
+                            <p class="mt-4 font-semibold">Defined Orbit</p>
+                        </div>
+                        <div class="flex items-center justify-center text-4xl font-bold text-[#003f5c]">&rarr;</div>
+                        <div class="flex-1 text-center p-6 border rounded-lg bg-gray-50">
+                            <h3 class="text-xl font-bold mb-4">Modern Quantum Model</h3>
+                            <div class="relative w-48 h-48 mx-auto flex items-center justify-center">
+                                <div class="absolute w-full h-full rounded-full" style="background: radial-gradient(circle, rgba(239,86,117,0.6) 0%, rgba(239,86,117,0.0) 70%);"></div>
+                                <div class="w-4 h-4 bg-[#7a5195] rounded-full"></div>
+                            </div>
+                             <p class="mt-4 font-semibold">Probability Cloud (Orbital)</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 pt-8 border-t">
+            <p class="text-gray-500">Infographic created with data on the Bohr Atomic Model.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const brilliantBlues = {
+            darkBlue: '#003f5c',
+            mediumBlue: '#374c80',
+            purple: '#7a5195',
+            magenta: '#bc5090',
+            pink: '#ef5675',
+            orange: '#ff764a',
+            yellow: '#ffa600'
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#333'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { color: '#333' },
+                    grid: { color: '#e0e0e0' }
+                },
+                x: {
+                    ticks: { color: '#333' },
+                    grid: { color: 'transparent' }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const ctxComposition = document.getElementById('compositionChart');
+        if (ctxComposition) {
+            new Chart(ctxComposition, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Protons & Neutrons (Nucleus)', 'Electrons (in Orbits)'],
+                    datasets: [{
+                        label: 'Mass Composition',
+                        data: [99.9, 0.1],
+                        backgroundColor: [brilliantBlues.yellow, brilliantBlues.pink],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#333' } },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+        }
+        
+        const ctxEnergy = document.getElementById('energyLevelChart');
+        if (ctxEnergy) {
+            new Chart(ctxEnergy, {
+                type: 'line',
+                data: {
+                    labels: ['n=1', 'n=2', 'n=3', 'n=4', 'n=5', 'n=6'],
+                    datasets: [{
+                        label: 'Relative Energy Level',
+                        data: [-13.6, -3.4, -1.51, -0.85, -0.54, -0.38],
+                        fill: true,
+                        borderColor: brilliantBlues.purple,
+                        backgroundColor: 'rgba(122, 81, 149, 0.2)',
+                        tension: 0.1,
+                        pointBackgroundColor: brilliantBlues.purple,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        y: {
+                            ...commonChartOptions.scales.y,
+                            title: { display: true, text: 'Energy (eV)', color: '#333' }
+                        },
+                        x: { ...commonChartOptions.scales.x }
+                    }
+                }
+            });
+        }
+        
+        const ctxApplicability = document.getElementById('applicabilityChart');
+        if (ctxApplicability) {
+            const rawLabels = ['Hydrogen Atom', 'Multi-electron Atoms', 'Atoms in Magnetic Fields'];
+            const wrappedLabels = rawLabels.map(label => wrapLabel(label, 16));
+
+            new Chart(ctxApplicability, {
+                type: 'bar',
+                data: {
+                    labels: wrappedLabels,
+                    datasets: [{
+                        label: 'Model Predictive Accuracy (%)',
+                        data: [100, 10, 0],
+                        backgroundColor: [brilliantBlues.mediumBlue, brilliantBlues.orange, brilliantBlues.pink],
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            ...commonChartOptions.scales.x,
+                             max: 100,
+                             ticks: { callback: function(value) { return value + "%" } }
+                        },
+                        y: { ...commonChartOptions.scales.y }
+                    },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

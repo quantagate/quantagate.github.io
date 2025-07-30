@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Raye Penber — Quantum Scientist | AI Researcher | Technologist"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,7 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-# 👋 Raye Penber — Quantum Scientist | AI Researcher | Technologist
 
 ## 🌌 Quantum Weirdness: Friend or Foe?  
 Harnessing the strangeness of quantum mechanics to build the future of technology.
