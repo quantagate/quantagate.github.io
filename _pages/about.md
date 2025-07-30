@@ -10,8 +10,6 @@ redirect_from:
 
 *If the universe insists on being strange, let’s at least make it useful.” — me, after my third espresso and fifth qubit reset.*
 
-<img class="rounded-image" src="https://github.com/quantagate/quantagate.github.io/blob/master/images/quatagates.jpg" alt="" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;" align="right">
-
 
 ## About Me
 
