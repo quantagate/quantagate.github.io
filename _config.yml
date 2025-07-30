@@ -54,7 +54,7 @@ author:
   # Social media
   artstation       : # Username
   bluesky          : # Replace this with you Bluesky username
-  facebook         : "quantumgate369"
+  facebook         : "quantumgates369"
   flickr           : # Username
   foursquare       : # Username
   goodreads        : # Username
@@ -75,7 +75,7 @@ author:
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
-  youtube          : "quantumgate369"
+  youtube          : "quantumgates369"
   zhihu            : # Username
 
 # Publication Category - The following the list of publication categories and their headings
@@ -134,13 +134,13 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : &quantumgates369
 facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Social media default site image
-og_description           :  # Social media default site image description
+og_image                 :  "quatagates.jpg"
+og_description           :  "If the universe insists on being strange, let’s at least make it useful.” — me, after my third espresso and fifth qubit reset."
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -151,9 +151,9 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "false" # false (default), "google", "google-universal", "google-analytics-4", "custom"
+  provider               :  "google-analytics-4" # false (default), "google", "google-universal", "google-analytics-4", "custom"
   google:
-    tracking_id          :
+    tracking_id          :  "G-BXXCBLJR8D"
 
 
 # Reading Files
