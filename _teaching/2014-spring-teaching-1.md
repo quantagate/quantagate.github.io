@@ -82,7 +82,11 @@ $$
 |\psi\rangle = \alpha |0\rangle + \beta |1\rangle
 $$
 
-> In this expression, \(\alpha\) and \(\beta\) are complex amplitudes such that \(|\alpha|^2 + |\beta|^2 = 1\).
+$
+|\psi\rangle = \alpha |0\rangle + \beta |1\rangle
+$
+
+> In this expression, $(\alpha)$ and \(\beta\) are complex amplitudes such that $(|\alpha|^2 + |\beta|^2 = 1)$.
 
 
 ---
