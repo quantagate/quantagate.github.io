@@ -136,22 +136,3 @@ I’m currently part of the incredible team at **IBM Quantum**, where I help des
 > Curious about quantum weirdness? Let's make it your advantage — not your enemy.  
 > — *Raye Penber*
 
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
